@@ -6,9 +6,10 @@ import fitbit
 import gather_keys_oauth2 as Oauth2
 import pandas as pd
 import datetime
+import secret
 
-CLIENT_ID = '22B4RG'
-CLIENT_SECRET = 'c511ebbf0974a6a69516919bae59b33f'
+CLIENT_ID = fb_CLIENT_ID
+CLIENT_SECRET = fb_CLIENT_SECRET
 
 server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
 server.browser_authorize()
