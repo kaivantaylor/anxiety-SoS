@@ -6,7 +6,7 @@ import fitbit
 import gather_keys_oauth2 as Oauth2
 import pandas as pd
 import datetime
-import secret
+from secret im port fb_CLIENT_ID,fb_CLIENT_SECRET 
 
 CLIENT_ID = fb_CLIENT_ID
 CLIENT_SECRET = fb_CLIENT_SECRET
