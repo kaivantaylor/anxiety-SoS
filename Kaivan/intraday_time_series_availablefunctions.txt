@@ -11,16 +11,3 @@ activities/minutesLightlyActive
 activities/minutesFairlyActive
 activities/minutesVeryActive
 activities/activityCalories
-
-activities/tracker/calories
-activities/tracker/steps
-activities/tracker/distance
-activities/tracker/floors
-activities/tracker/elevation
-activities/tracker/minutesSedentary
-activities/tracker/minutesLightlyActive
-activities/tracker/minutesFairlyActive
-activities/tracker/minutesVeryActive
-activities/tracker/activityCalories
-activities/list
-activities/heart
