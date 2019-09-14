@@ -2,8 +2,8 @@
 Using fitbit API to improve health related problems
 
 # Collaborators
-[Elijsha](github.com/IAmYew)
+[Elijsha](https://github.com/IAmYew)
 
-[Marty](github.com/martyjapilado)
+[Marty](https://github.com/martyjapilado)
 
-[Rendell](github.com/IntenseMarrow9)
+[Rendell](https://github.com/IntenseMarrow9)
