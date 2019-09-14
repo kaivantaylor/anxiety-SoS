@@ -23,4 +23,5 @@ yesterday = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime(
 yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
 today = str(datetime.datetime.now().strftime("%Y%m%d"))
 
-fit_statsSl = auth2_client.sleep()
+_001fb = auth2_client.body()
+print(_001fb)
