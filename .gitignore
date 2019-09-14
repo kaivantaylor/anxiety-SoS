@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-Kaivan/secret.py
+*secret.py
 
 # C extensions
 *.so
