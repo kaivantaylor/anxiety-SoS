@@ -1,7 +1,7 @@
 # we import the Twilio client from the dependency we just installed
 from twilio.rest import Client
 from secret import sms_SID,sms_token
-from phone_numbers import elijsha,rendell,kaivan,twillonumber
+from secret import elijsha,rendell,kaivan,twillonumber
 
 # the following line needs your Twilio Account SID and Auth Token
 client = Client(sms_SID, sms_token)
