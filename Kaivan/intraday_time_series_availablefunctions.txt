@@ -1,0 +1,26 @@
+list of things available from intraday_time_series
+
+activities/calories
+activities/caloriesBMR
+activities/steps
+activities/distance
+activities/floors
+activities/elevation
+activities/minutesSedentary
+activities/minutesLightlyActive
+activities/minutesFairlyActive
+activities/minutesVeryActive
+activities/activityCalories
+
+activities/tracker/calories
+activities/tracker/steps
+activities/tracker/distance
+activities/tracker/floors
+activities/tracker/elevation
+activities/tracker/minutesSedentary
+activities/tracker/minutesLightlyActive
+activities/tracker/minutesFairlyActive
+activities/tracker/minutesVeryActive
+activities/tracker/activityCalories
+activities/list
+activities/heart
