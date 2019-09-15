@@ -15,6 +15,6 @@ def run_loop():
 
 
 print("\n ---------------------------------------------------------------------------------------")
-check_anxiety()
 update_CSV()
+check_anxiety()
 run_loop()

@@ -31,10 +31,10 @@ def update_CSV():
 
     a_list = []
     for i in fit_calorie:
-        print(i['calories'])
+        #print(i['calories'])
         a_list.append(i['calories'])
 
-    caloriesdf = pd.DataFrame({'Amount of Calories':a_list})
+    caloriesdf = pd.DataFrame({'Calories':a_list})
 
     stime_list = []
     sval_list = []
@@ -61,6 +61,9 @@ def update_CSV():
 
     ssummarydf.to_csv('sleep'+ \
                    '.csv', columns=['Date','Efficiency','Minutes Asleep','Time in Bed'], header=True, index=False, mode = 'a')
-
+    try:
+        os.remove("calories.csv")
+    except FileNotFoundError:
+        pass
     caloriesdf.to_csv('calories'+ \
-                   '.csv', columns=['Calories'], header=False, index=False, mode = 'a')
+                   '.csv', columns=['Calories'], header=True, index=False, mode = 'a')
