@@ -1,6 +1,6 @@
 import csv
 import datetime
-from send_sms import send_sms
+from send_sms import message
 
 sleep_list = []
 heart_list = []
@@ -65,4 +65,16 @@ if bool_sleep == True:
 if bool_calorie == True:
     total += 20
 
-print(total)
+standard_msg = "Rendell's fitbit has detected abnormal metrics:" + "\n"
+if bool_heart == True:
+    ht_msg = 'Higher than usual heart rate (110+ BPM)' + "\n"
+    standard_msg += ht_msg
+if bool_sleep == True:
+    sp_msg = 'Less than 5 hours of sleep' + "\n"
+    standard_msg += sp_msg
+if bool_calorie == True:
+    cl_msg = 'Eating less than 1800 calories per day' + "\n"
+    standard_msg += cl_msg
+
+if total >= 60:
+    message(standard_msg + "Please check on Rendell when you can.")
