@@ -13,3 +13,5 @@ def infinite_update():
     s.run()
 
     System.out.println("\n ------------------------------------------------")
+
+infinite_update()
