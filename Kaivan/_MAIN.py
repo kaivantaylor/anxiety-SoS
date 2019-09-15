@@ -1,4 +1,4 @@
-# Loops infinitely every 30 seconds
+# Loops infinitely every 30-60 seconds
 from update_CSV import update_CSV
 from check_anxiety import check_anxiety
 import sched, time
@@ -9,9 +9,9 @@ def run_loop():
         update_CSV()
         check_anxiety()
         standard_msg += ht_msg
-        s.enter(30, 1, do_something, (sc,))
+        s.enter(35, 1, do_something, (sc,))
 
-    s.enter(30, 1, do_something, (s,))
+    s.enter(35, 1, do_something, (s,))
     s.run()
 
     System.out.println("\n ------------------------------------------------")

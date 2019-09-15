@@ -43,7 +43,7 @@ def check_anxiety():
                 pass
 
     for heart_rate in heart_list:
-        if heart_rate < 110:
+        if heart_rate < 130:
             bool_heart = True
 
     for sleep in sleep_list:
@@ -68,7 +68,7 @@ def check_anxiety():
 
     standard_msg = "Rendell's fitbit has detected abnormal metrics:" + "\n"
     if bool_heart == True:
-        ht_msg = 'Higher than usual heart rate (110+ BPM)' + "\n"
+        ht_msg = 'Higher than usual heart rate (130+ BPM)' + "\n"
         standard_msg += ht_msg
     if bool_sleep == True:
         sp_msg = 'Less than 5 hours of sleep' + "\n"
@@ -78,4 +78,4 @@ def check_anxiety():
         standard_msg += cl_msg
 
     if total >= 60:
-        message(standard_msg + "Please check on Rendell when you can.")
+        message(standard_msg + "Please check on Rendell immediately.")
