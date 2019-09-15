@@ -15,7 +15,6 @@ def check_anxiety():
         heart_rate = csv.reader(csv_file, delimiter=',')
         for row in heart_rate: # row is the addresses individually from the csv csv_file
             try:
-                print("Heart Rate", row[1])
                 a = int(row[1])
                 heart_list.append(a)
                 if len(heart_list) == 10:
@@ -28,7 +27,6 @@ def check_anxiety():
         for row in sleep: # row is the addresses individually from the csv csv_file
             #print(row[-1])
             try:
-                print("minutes of sleep from yesterday", row[2])
                 b = int(row[1])
                 sleep_list.append(b)
             except ValueError:
@@ -39,24 +37,27 @@ def check_anxiety():
         calorie = csv.reader(csv_file, delimiter=',')
         for row in calorie: # row is the addresses individually from the csv csv_file
             try:
-                print("calorie intake", row[0])
                 c = int(row[0])
                 calorie_list.append(c)
             except ValueError:
                 pass
 
     for heart_rate in heart_list:
+        print("Heart Rate:", heart_rate)
         if heart_rate > 130:
             bool_heart = True
 
     for sleep in sleep_list:
+        print("Minutes Slept Last Night:", sleep)
         if int(sleep) < 300:
             bool_sleep = True
 
     cal_total = 0
     for calorie in calorie_list:
+        print("Calories consumed:", calorie)
         cal_total += calorie
     #print(cal_total)
+
     if cal_total < 1800:
         bool_calorie = True
 
