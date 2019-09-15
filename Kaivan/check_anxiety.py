@@ -41,7 +41,7 @@ def check_anxiety():
                 calorie_list.append(c)
             except ValueError:
                 pass
-    println()
+    println("\n")
     println(datetime.datetime.now().strftime("%Y%m%d"))
     println(datetime.datetime.now())
     for heart_rate in heart_list:
