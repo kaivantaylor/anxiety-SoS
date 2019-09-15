@@ -27,7 +27,16 @@ def update_CSV():
 
     fit_statsHR = auth2_client.intraday_time_series('activities/heart')
     fitbit_stats2 = auth2_client.sleep(date=yesterday2)['sleep'][0]
-    fit_calorie = auth2_client.recent_foods()['calories'][0]
+    fit_calorie = auth2_client.recent_foods(user_id = "-")
+
+    print(fit_calorie)
+
+    a_list = []
+    for i in fit_calorie:
+        #print(i['calories'])
+        a_list.append(i['calories'])
+
+    caloriesdf = pd.DataFrame({'Calories':a_list})
 
     stime_list = []
     sval_list = []
@@ -53,9 +62,6 @@ def update_CSV():
 
     ssummarydf.to_csv('sleep'+ \
                    '.csv', columns=['Date','Efficiency','Minutes Asleep','Time in Bed'], header=True, index=False, mode = 'a')
-
-    caloriesdf = pd.DataFrame({'Calories':fit_calorie['calories']
-                        },index=[0])
 
     caloriesdf.to_csv('calories'+ \
                    '.csv', columns=['Calories'], header=True, index=False, mode = 'a')
