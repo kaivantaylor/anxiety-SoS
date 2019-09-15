@@ -46,7 +46,7 @@ def update_CSV():
     heartdf = pd.DataFrame({'Heart Rate':sval_list,
                          'Time':stime_list})
 
-    print(os.getcwd())
+    #print(os.getcwd())
     os.chdir("C:/Users/speedykai/Desktop/hophacks2019/kaivan/CSV")
     heartdf.to_csv('heartrate'+ \
                    '.csv', \
