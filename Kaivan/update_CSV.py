@@ -38,7 +38,7 @@ def update_heartrate():
 
     print(os.getcwd())
     os.chdir("C:/Users/speedykai/Desktop/hophacks2019/kaivan/CSV")
-    heartdf.to_csv('heartrate_'+ \
+    heartdf.to_csv('heartrate'+ \
                    today+'.csv', \
                    columns=['Time','Heart Rate'], header=True, \
                    index = False)
