@@ -18,3 +18,4 @@ def send_sms():
     client.messages.create(to=elijsha,
                            from_=twillonumber,
                            body=message)
+send_sms()
