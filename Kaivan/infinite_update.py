@@ -2,12 +2,14 @@
 from update_CSV import update_heartrate
 import sched, time
 
-
-update_heartrate()
-s = sched.scheduler(time.time, time.sleep)
-def do_something(sc):
+def infinite_update():
     update_heartrate()
-    s.enter(30, 1, do_something, (sc,))
+    s = sched.scheduler(time.time, time.sleep)
+    def do_something(sc):
+        update_heartrate()
+        s.enter(30, 1, do_something, (sc,))
 
-s.enter(30, 1, do_something, (s,))
-s.run()
+    s.enter(30, 1, do_something, (s,))
+    s.run()
+
+    System.out.println("\n ------------------------------------------------")
