@@ -12,7 +12,7 @@ import os
 CLIENT_ID = fb_CLIENT_ID
 CLIENT_SECRET = fb_CLIENT_SECRET
 
-def update_heartrate():
+def update_CSV():
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
     server.browser_authorize()
 
@@ -26,6 +26,7 @@ def update_heartrate():
     today = str(datetime.datetime.now().strftime("%Y%m%d"))
 
     fit_statsHR = auth2_client.intraday_time_series('activities/heart')
+    fitbit_stats2 = auth2_client.sleep(date=yesterday2)['sleep'][0]
 
     stime_list = []
     sval_list = []
@@ -42,3 +43,12 @@ def update_heartrate():
                    '.csv', \
                    columns=['Time','Heart Rate'], header=True, \
                    index = False)
+
+    ssummarydf = pd.DataFrame({'Date':fitbit_stats2['dateOfSleep'],
+                         'Efficiency':fitbit_stats2['efficiency'],
+                         'Minutes Asleep':fitbit_stats2['minutesAsleep'],
+                         'Time in Bed':fitbit_stats2['timeInBed']
+                        },index=[0])
+
+    ssummarydf.to_csv('sleep'+ \
+                   '.csv', columns=['Date','Efficiency','Minutes Asleep','Time in Bed'], header=True, index=False, mode = 'a')
