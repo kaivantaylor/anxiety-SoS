@@ -25,7 +25,7 @@ def update_CSV():
     yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
     today = str(datetime.datetime.now().strftime("%Y%m%d"))
 
-    fit_statsHR = auth2_client.intraday_time_series('activities/heart')
+    fit_statsHR = auth2_client.intraday_time_series('activities/heart', base_date='today', detail_level='1min')
     fitbit_stats2 = auth2_client.sleep(date=yesterday2)['sleep'][0]
     fit_calorie = auth2_client.recent_foods(user_id = "-")
 
@@ -41,7 +41,8 @@ def update_CSV():
     for i in fit_statsHR['activities-heart-intraday']['dataset']:
         stime_list.append(i['time'])
         sval_list.append(i['value'])
-
+    stime_list.reverse()
+    sval_list.reverse()
     heartdf = pd.DataFrame({'Heart Rate':sval_list,
                          'Time':stime_list})
 

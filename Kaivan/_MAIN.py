@@ -14,6 +14,8 @@ def run_loop():
     s.enter(35, 1, do_something, (s,))
     s.run()
 
-    System.out.println("\n ------------------------------------------------")
 
+print("\n -------------------------------------------------")
+update_CSV()
+check_anxiety()
 run_loop()

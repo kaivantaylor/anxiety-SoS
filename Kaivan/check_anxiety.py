@@ -15,19 +15,21 @@ def check_anxiety():
         heart_rate = csv.reader(csv_file, delimiter=',')
         for row in heart_rate: # row is the addresses individually from the csv csv_file
             try:
+                print("Heart Rate", row[1])
                 a = int(row[1])
                 heart_list.append(a)
+                if len(heart_list) == 10:
+                    break
             except ValueError:
                 pass
-            if len(heart_list) == 10:
-                break
 
     with open(r"C:\\Users\speedykai\Desktop\hophacks2019\Kaivan\CSV\sleep.csv") as csv_file:
         sleep = csv.reader(csv_file, delimiter=',')
         for row in sleep: # row is the addresses individually from the csv csv_file
-            #print(row[2])
+            #print(row[-1])
             try:
-                b = int(row[2])
+                print("minutes of sleep from yesterday", row[2])
+                b = int(row[1])
                 sleep_list.append(b)
             except ValueError:
                 pass
@@ -37,13 +39,14 @@ def check_anxiety():
         calorie = csv.reader(csv_file, delimiter=',')
         for row in calorie: # row is the addresses individually from the csv csv_file
             try:
+                print("calorie intake", row[0])
                 c = int(row[0])
                 calorie_list.append(c)
             except ValueError:
                 pass
 
     for heart_rate in heart_list:
-        if heart_rate < 130:
+        if heart_rate > 130:
             bool_heart = True
 
     for sleep in sleep_list:
