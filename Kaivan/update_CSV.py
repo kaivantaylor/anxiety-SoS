@@ -29,8 +29,6 @@ def update_CSV():
     fitbit_stats2 = auth2_client.sleep(date=yesterday2)['sleep'][0]
     fit_calorie = auth2_client.recent_foods(user_id = "-")
 
-    print(fit_calorie)
-
     a_list = []
     for i in fit_calorie:
         #print(i['calories'])

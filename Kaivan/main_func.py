@@ -2,10 +2,13 @@ import csv
 import datetime
 from send_sms import send_sms
 
-heart_list = []
-bool_heart = False
 sleep_list = []
+heart_list = []
+calorie_list = []
+
 bool_sleep = False
+bool_heart = False
+bool_calorie = False
 
 with open(r"C:\\Users\speedykai\Desktop\hophacks2019\Kaivan\CSV\heartrate.csv") as csv_file:
     heart_rate = csv.reader(csv_file, delimiter=',')
@@ -18,27 +21,48 @@ with open(r"C:\\Users\speedykai\Desktop\hophacks2019\Kaivan\CSV\heartrate.csv") 
         if len(heart_list) == 10:
             break
 
-for heart_rate in heart_list:
-    if heart_rate < 110:
-        bool_heart = True
-
 with open(r"C:\\Users\speedykai\Desktop\hophacks2019\Kaivan\CSV\sleep.csv") as csv_file:
     sleep = csv.reader(csv_file, delimiter=',')
     for row in sleep: # row is the addresses individually from the csv csv_file
-        print(row[2])
+        #print(row[2])
         try:
-            b = row[2]
+            b = int(row[2])
             sleep_list.append(b)
         except ValueError:
             pass
         if len(sleep_list) == 1:
             break
+with open(r"C:\\Users\speedykai\Desktop\hophacks2019\Kaivan\CSV\calories.csv") as csv_file:
+    calorie = csv.reader(csv_file, delimiter=',')
+    for row in calorie: # row is the addresses individually from the csv csv_file
+        try:
+            c = int(row[0])
+            calorie_list.append(c)
+        except ValueError:
+            pass
+
+for heart_rate in heart_list:
+    if heart_rate < 110:
+        bool_heart = True
+
 for sleep in sleep_list:
     if int(sleep) < 300:
         bool_sleep = True
+
+cal_total = 0
+for calorie in calorie_list:
+    cal_total += calorie
+#print(cal_total)
+if cal_total < 1800:
+    bool_calorie = True
+
 
 total = 0
 if bool_heart == True:
     total += 40
 if bool_sleep == True:
     total += 40
+if bool_calorie == True:
+    total += 20
+
+print(total)
