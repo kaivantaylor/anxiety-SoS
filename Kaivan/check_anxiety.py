@@ -42,8 +42,8 @@ def check_anxiety():
             except ValueError:
                 pass
     print("----------------------------------------------------------------------")
-    println(datetime.datetime.now().strftime("%Y%m%d"))
-    println(datetime.datetime.now())
+    print(datetime.datetime.now().strftime("%Y%m%d"))
+    print(datetime.datetime.now())
     for heart_rate in heart_list:
         print("Heart Rate:", heart_rate)
         if heart_rate > 130:
@@ -55,10 +55,10 @@ def check_anxiety():
             bool_sleep = True
 
     cal_total = 0
-    for calorie in calorie_list:
-        print("Calories consumed:", calorie)
-        cal_total += calorie
-    #print(cal_total)
+    for food in calorie_list:
+        cal_total += food
+        print("Calories consumed:", food)
+    print(cal_total)
 
     if cal_total < 1800:
         bool_calorie = True

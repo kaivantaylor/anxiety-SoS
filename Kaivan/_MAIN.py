@@ -8,7 +8,6 @@ def run_loop():
     def do_something(sc):
         update_CSV()
         check_anxiety()
-        standard_msg += ht_msg
         s.enter(35, 1, do_something, (sc,))
 
     s.enter(35, 1, do_something, (s,))
@@ -16,6 +15,6 @@ def run_loop():
 
 
 print("\n ---------------------------------------------------------------------------------------")
-update_CSV()
 check_anxiety()
+update_CSV()
 run_loop()
