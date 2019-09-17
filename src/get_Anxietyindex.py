@@ -94,4 +94,8 @@ def check_anxiety():
         cl_msg = 'Eating less than 1800 calories per day' + "\n"
         standard_msg += cl_msg
 
-    return total
+    rt_list = []
+    rt_list.append(total)
+    rt_list.append(standard_msg)
+
+    return rt_list # Give index level for anxiety & message

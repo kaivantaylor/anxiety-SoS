@@ -15,8 +15,8 @@ def run_loop():
 
     def do_something(sc): #loop every "loop_seconds" seconds
         update_CSV() # Update CSV to get latest data
-        
-        index_msg = check_anxiety() # Get index and msg from check_anxiety()
+
+        index_msg = get_Anxietyindex() # Get index and msg from check_anxiety()
         if index_msg[0] >= 60: # Check to see if index is high enough to send messge
             str_msg = str(index_msg[1] + "Please check on Rendell immediately.")
             message(str_msg, elijsha)

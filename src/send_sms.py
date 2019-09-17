@@ -3,7 +3,6 @@
 
 from twilio.rest import Client
 from secret import sms_SID,sms_token
-from secret import elijsha,rendell,kaivan,twillonumber
 
 def message(message, user): # requires string message and user's phone #
     client = Client(sms_SID, sms_token)
