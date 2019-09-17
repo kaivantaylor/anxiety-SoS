@@ -1,3 +1,14 @@
+# Kaivan Taylor
+# Creates an algorithm for determining the user's anxiety level. The algorithm uses
+# an index level which is determined from three variables. That is the heart rate, calorie intake,
+# and the amount of sleep from last night. Sleep and heart rate accounts for 40% of the index and
+# calorie intake accounts for 20%.
+#
+# Contributers:
+# Sleep is less than 5 hours
+# Calorie intake is less than 1800 Calories
+# Heart rate is more than 130 BPM
+
 import csv
 import datetime
 from send_sms import message

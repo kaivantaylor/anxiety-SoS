@@ -1,6 +1,9 @@
 # Source: https://towardsdatascience.com/collect-your-own-fitbit-data-with-python-ff145fa10873
 # Getting familiar with fitbit API
 # Kaivan Taylor
+#
+# This program sends an HTTPS request from fitbit servers which returns a JSON. The JSON
+# is then converted to a CSV format and updates the folder.
 
 import fitbit
 import gather_keys_oauth2 as Oauth2
