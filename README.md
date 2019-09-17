@@ -11,7 +11,7 @@ Rendell was used as the test subject for this project. We wanted to have a singl
 The use of biometric data is an amazing tool for understanding how our bodies work. Using the data we collected, we could potentially extend the use to hospital patients. Instead of a machine hooked up to the patient, we could replicate the same monitoring of their biometrics. In doing so, this could create more freedom of movement for the patient which could increase hapiness.
 
 # What we learned
-There is research being conducted on the use of smart watches with biometrics in patients going through epileptic shock. Using the accelerometer, we could to our advantage to detect signs of seizures during, or before which can help alert medical personnel.
+There is research being conducted on the use of smart watches with biometrics in patients going through epileptic shock. Using this data, we could detect symptoms of seizures which can help alert medical personnel.
 
 # Collaborators
 [Elijsha](https://github.com/IAmYew)
