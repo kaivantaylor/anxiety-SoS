@@ -94,5 +94,4 @@ def check_anxiety():
         cl_msg = 'Eating less than 1800 calories per day' + "\n"
         standard_msg += cl_msg
 
-    if total >= 60:
-        message(standard_msg + "Please check on Rendell immediately.")
+    return total

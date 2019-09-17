@@ -5,13 +5,8 @@ from twilio.rest import Client
 from secret import sms_SID,sms_token
 from secret import elijsha,rendell,kaivan,twillonumber
 
-def message(message):
+def message(message, user): # requires string message and user's phone #
     client = Client(sms_SID, sms_token)
-
-    client.messages.create(to=kaivan,
-                           from_=twillonumber,
-                           body=message)
-
-    client.messages.create(to=elijsha,
+    client.messages.create(to=user,
                            from_=twillonumber,
                            body=message)

@@ -6,21 +6,26 @@
 
 from update_CSV import update_CSV # importing other .py files functions
 from check_anxiety import check_anxiety
+from secret import elijsha,rendell,kaivan,twillonumber
 import sched, time # time tracking
 
 def run_loop():
     loop_seconds = 35 # one variable to make it easier to change the time
     s = sched.scheduler(time.time, time.sleep)
-    def do_something(sc):
-        update_CSV()
-        check_anxiety()
+
+    def do_something(sc): #loop every "loop_seconds" seconds
+        update_CSV() # Update CSV to get latest data
+        
+        index_msg = check_anxiety() # Get index and msg from check_anxiety()
+        if index_msg[0] >= 60: # Check to see if index is high enough to send messge
+            str_msg = str(index_msg[1] + "Please check on Rendell immediately.")
+            message(str_msg, elijsha)
+            message(str_msg, kaivan)
+
         s.enter(loop_seconds, 1, do_something, (sc,))
 
     s.enter(loop_seconds, 1, do_something, (s,))
     s.run()
 
-
 print("\n ---------------------------------------------------------------------------------------")
-update_CSV()
-check_anxiety()
 run_loop()
