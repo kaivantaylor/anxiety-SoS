@@ -5,7 +5,7 @@
 # level of anxiety is high enough. If so, it will send a message through twillo API
 
 from update_CSV import update_CSV # importing other .py files functions
-from get_Anxietyindex import check_anxiety
+from get_Anxietyindex import get_Anxietyindex
 from secret import elijsha,rendell,kaivan,twillonumber
 import sched, time # time tracking
 
