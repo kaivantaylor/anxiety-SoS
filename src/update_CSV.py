@@ -58,7 +58,7 @@ def update_CSV():
 
     # Changing working directory to correct folder
     #print(os.getcwd())
-    os.chdir("C:/Users/speedykai/Desktop/hophacks2019/CSV")
+    os.chdir("C:/Users/speedykai/Desktop/hophacks2019/docs")
 
     try: # deleting onld csv files to prevent overwriting in the same csv
         os.remove("calories.csv")
