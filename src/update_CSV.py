@@ -5,33 +5,32 @@
 # This program sends an HTTPS request from fitbit servers which returns a JSON. The JSON
 # is then converted to a CSV format and updates the folder.
 
-import fitbit
-import gather_keys_oauth2 as Oauth2
-from secret import fb_CLIENT_ID,fb_CLIENT_SECRET
-import pandas as pd
-import datetime
-import os
+import fitbit # Fitbit API
+import gather_keys_oauth2 as Oauth2 # Oauth2 used for authorizing server
+import pandas as pd # Pandas used for data frame
+import datetime # date time for date which makes it easier to get date instead of typing it out
+import os # os for deleting files and changing working directory
+from secret import fb_CLIENT_ID,fb_CLIENT_SECRET # for hiding phone numbers and client ids
 
 CLIENT_ID = fb_CLIENT_ID
 CLIENT_SECRET = fb_CLIENT_SECRET
 
 def update_CSV():
     server = Oauth2.OAuth2Server(CLIENT_ID, CLIENT_SECRET)
-    server.browser_authorize()
-
+    server.browser_authorize() # Using token to authenticate server
     ACCESS_TOKEN = str(server.fitbit.client.session.token['access_token'])
     REFRESH_TOKEN = str(server.fitbit.client.session.token['refresh_token'])
-
     auth2_client = fitbit.Fitbit(CLIENT_ID, CLIENT_SECRET, oauth2=True, access_token=ACCESS_TOKEN, refresh_token=REFRESH_TOKEN)
 
-    yesterday = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y%m%d"))
-    yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
-    today = str(datetime.datetime.now().strftime("%Y%m%d"))
+    yesterday = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y%m%d")) # today - 1 day
+    yesterday2 = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")) # today - 2 days
+    today = str(datetime.datetime.now().strftime("%Y%m%d")) # today
 
-    fit_statsHR = auth2_client.intraday_time_series('activities/heart', base_date='today', detail_level='1min')
-    fitbit_stats2 = auth2_client.sleep(date=yesterday2)['sleep'][0]
+    fit_heartrate = auth2_client.intraday_time_series('activities/heart', base_date='today', detail_level='1min') # retrieving JSON
+    fit_sleep = auth2_client.sleep(date=yesterday2)['sleep'][0]
     fit_calorie = auth2_client.recent_foods(user_id = "-")
 
+    # Getting data from calories into a data frame
     a_list = []
     for i in fit_calorie:
         #print(i['calories'])
@@ -39,9 +38,10 @@ def update_CSV():
 
     caloriesdf = pd.DataFrame({'Calories':a_list})
 
+    # Getting data from heart rate into data frame
     stime_list = []
     sval_list = []
-    for i in fit_statsHR['activities-heart-intraday']['dataset']:
+    for i in fit_heartrate['activities-heart-intraday']['dataset']:
         stime_list.append(i['time'])
         sval_list.append(i['value'])
     stime_list.reverse()
@@ -49,24 +49,30 @@ def update_CSV():
     heartdf = pd.DataFrame({'Heart Rate':sval_list,
                          'Time':stime_list})
 
-    #print(os.getcwd())
-    os.chdir("C:/Users/speedykai/Desktop/hophacks2019/kaivan/CSV")
-    heartdf.to_csv('heartrate'+ \
-                   '.csv', \
-                   columns=['Time','Heart Rate'], header=True, \
-                   index = False)
-
-    ssummarydf = pd.DataFrame({'Date':fitbit_stats2['dateOfSleep'],
-                         'Efficiency':fitbit_stats2['efficiency'],
-                         'Minutes Asleep':fitbit_stats2['minutesAsleep'],
-                         'Time in Bed':fitbit_stats2['timeInBed']
+    # Getting data from sleep into data frame
+    sleepdf = pd.DataFrame({'Date':fit_sleep['dateOfSleep'],
+                         'Efficiency':fit_sleep['efficiency'],
+                         'Minutes Asleep':fit_sleep['minutesAsleep'],
+                         'Time in Bed':fit_sleep['timeInBed']
                         },index=[0])
 
-    ssummarydf.to_csv('sleep'+ \
-                   '.csv', columns=['Date','Efficiency','Minutes Asleep','Time in Bed'], header=True, index=False, mode = 'a')
-    try:
+    # Changing working directory to correct folder
+    #print(os.getcwd())
+    os.chdir("C:/Users/speedykai/Desktop/hophacks2019/CSV")
+
+    try: # deleting onld csv files to prevent overwriting in the same csv
+        os.remove("calories.csv")
+        os.remove("heartrate.csv")
         os.remove("calories.csv")
     except FileNotFoundError:
         pass
-    caloriesdf.to_csv('calories'+ \
-                   '.csv', columns=['Calories'], header=True, index=False, mode = 'a')
+
+    # Turning heart rate, sleep, and calorie dataframe into csv
+    heartdf.to_csv('heartrate.csv',\
+                   columns=['Time','Heart Rate'], header=True, \
+                   index = False)
+    sleepdf.to_csv('sleep.csv',\
+                    columns=['Date','Efficiency','Minutes Asleep','Time in Bed'],\
+                    header=True, index=False, mode = 'a')
+    caloriesdf.to_csv('calories.csv',\
+                        columns=['Calories'], header=True, index=False, mode = 'a')
