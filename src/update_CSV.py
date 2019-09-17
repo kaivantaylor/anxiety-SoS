@@ -28,11 +28,10 @@ def update_CSV():
 
     fit_heartrate = auth2_client.intraday_time_series('activities/heart', base_date='today', detail_level='1min') # retrieving JSON
     try:
-        fit_sleep = auth2_client.sleep(date=yesterday2)['sleep'][0]
-        fit_sleep = auth2_client.sleep(date=yesterday)['sleep'][0]
         fit_sleep = auth2_client.sleep(date='today')['sleep'][0]
     except IndexError:
-        pass
+        fit_sleep = auth2_client.sleep(date=yesterday)['sleep'][0]
+        fit_sleep = auth2_client.sleep(date=yesterday2)['sleep'][0]
     fit_calorie = auth2_client.recent_foods(user_id = "-")
 
     # Getting data from calories into a data frame
