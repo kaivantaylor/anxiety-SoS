@@ -13,7 +13,7 @@ import csv
 import datetime
 from send_sms import message
 
-def check_anxiety():
+def get_Anxietyindex():
     sleep_list = []
     heart_list = []
     calorie_list = []

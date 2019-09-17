@@ -5,7 +5,7 @@
 # level of anxiety is high enough. If so, it will send a message through twillo API
 
 from update_CSV import update_CSV # importing other .py files functions
-from check_anxiety import check_anxiety
+from get_Anxietyindex import check_anxiety
 from secret import elijsha,rendell,kaivan,twillonumber
 import sched, time # time tracking
 
@@ -19,7 +19,7 @@ def run_loop():
         index_msg = get_Anxietyindex() # Get index and msg from check_anxiety()
         if index_msg[0] >= 60: # Check to see if index is high enough to send messge
             str_msg = str(index_msg[1] + "Please check on Rendell immediately.")
-            message(str_msg, elijsha)
+            #message(str_msg, elijsha)
             message(str_msg, kaivan)
 
         s.enter(loop_seconds, 1, do_something, (sc,))
