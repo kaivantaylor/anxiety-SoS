@@ -68,7 +68,7 @@ def update_CSV():
     try: # deleting onld csv files to prevent overwriting in the same csv
         os.remove("calories.csv")
         os.remove("heartrate.csv")
-        os.remove("calories.csv")
+        os.remove("sleep.csv")
     except FileNotFoundError:
         pass
 
