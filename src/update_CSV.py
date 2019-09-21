@@ -27,11 +27,8 @@ def update_CSV():
     today = str(datetime.datetime.now().strftime("%Y%m%d")) # today
 
     fit_heartrate = auth2_client.intraday_time_series('activities/heart', base_date='today', detail_level='1min') # retrieving JSON
-    try:
-        fit_sleep = auth2_client.sleep(date='today')['sleep'][0]
-    except IndexError:
-        fit_sleep = auth2_client.sleep(date=yesterday)['sleep'][0]
-        fit_sleep = auth2_client.sleep(date=yesterday2)['sleep'][0]
+
+    fit_sleep = auth2_client.sleep(date=yesterday2)['sleep'][0]
     fit_calorie = auth2_client.recent_foods(user_id = "-")
 
     # Getting data from calories into a data frame
@@ -62,8 +59,8 @@ def update_CSV():
 
     # Changing working directory to correct folder
     #print(os.getcwd())
-    #os.chdir("C:/Users/speedykai/Desktop/hophacks2019/docs")
-    os.chdir("C:/Users/kaiva/Onedrive/Desktop/Programming/hophacks2019/docs")
+    os.chdir("C:/Users/speedykai/Desktop/hophacks2019/docs")
+    #os.chdir("C:/Users/kaiva/Onedrive/Desktop/Programming/hophacks2019/docs")
 
     try: # deleting onld csv files to prevent overwriting in the same csv
         os.remove("calories.csv")
